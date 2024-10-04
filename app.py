@@ -4,9 +4,18 @@ st.title("Modelling Student Stress")
 
 st.header("Research Proposal")
 
-st.subheader("Introduction")
+st.subheader("Introduction and Problem Definition")
+st.markdown("""
+Student stress significantly affects academic performance, mental health, and well-being. 
+It arises from multiple factors, including anxiety, sleep quality, peer pressure, and academic performance. 
+To provide targeted support, understanding these interconnected influences is essential. 
+We aim to develop a predictive model that accurately determines student stress levels during a semester, enabling proactive interventions to enhance well-being.
 
-st.subheader("Problem Definition")
+Prior research highlights factors contributing to student stress, including psychological (anxiety, depression), physiological (sleep issues, headaches), and social influences (peer pressure, bullying). 
+Machine learning models like decision trees, SVMs, and neural networks have been employed to predict stress levels effectively. 
+For instance, Choi et al. (2019) used random forests with physiological data, and Wijaya et al. (2021) applied logistic regression to explore academic and social stress factors, showing promising results for intervention strategies.
+""")
+
 
 st.subheader("Methods")
 st.markdown("#### Data Preprocessing")
@@ -50,8 +59,24 @@ provides high predictive accuracy that is necessary for our application.
 
 st.subheader("Results and Discussion")
 st.markdown("#### Metrics")
+st.markdown("""
+Accuracy: Measures the proportion of correct predictions out of all predictions, providing an overall sense of model performance.
+            
+Precision: The proportion of true positives among all positive predictions, crucial when false positives are costly.
+
+Recall (Sensitivity): The proportion of actual high-stress students correctly identified by the model, reducing false negatives.
+
+F1 Score: Balances precision and recall for a comprehensive view of the model’s accuracy.
+""")
 st.markdown("#### Goals")
+st.markdown("""
+Accuracy, Precision, Recall, F1 Score: Aim for at least 80% to ensure high performance across all metrics.
+""")
+
 st.markdown("#### Expected Results")
+st.markdown("""
+Strong factor correlations, high model performance, early stress identification, and positive impact on student well-being.
+""")
 
 st.subheader("References")
 
