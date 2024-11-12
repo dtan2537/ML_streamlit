@@ -53,6 +53,7 @@ Looking at the combined use of SVM and PCA, a few key problems are addressed. Ir
 
 st.subheader("Results and Discussion")
 st.markdown("#### Confusion Matrix Analysis")
+st.image("visuals/Confusion_Matrix.png")
 st.markdown("""
 The confusion matrix visualization shows the model's prediction performance across different classes using a blue-scale heatmap. Key observations:
 
@@ -62,6 +63,7 @@ The confusion matrix visualization shows the model's prediction performance acro
 - The symmetrical nature of misclassifications suggests no systematic bias toward any particular class
 """)
 st.markdown("#### Classification Report Metrics")
+st.image("visuals/Report.png")
 st.markdown("""
 The detailed classification report reveals:
 
@@ -75,6 +77,7 @@ The consistent F1-scores around 0.90 across all classes indicates well-balanced 
 """)
 
 st.markdown("#### ROC Curve Analysis")
+st.image("visuals/ROC_Curve.png")
 st.markdown("""
 The ROC curves plot demonstrates the model's discrimination ability:
 
