@@ -19,23 +19,56 @@ For instance, Choi et al. (2019) used random forests with physiological data, an
 
 st.subheader("Methods")
 st.markdown("#### Data Preprocessing")
+st.markdown("""
+The preprocessing methods that our group chose to initially focus on were data standardization and dimensionality reduction. 
+We require data standardization to maintain numerical stability throughout the training of our models as the varying feature magnitudes in our dataset span from very small to quite large, creating the potential for overflow or underflow. 
+Additionally, since many algorithms we apply later on do not inherently handle scaling, handling this standardization during preprocessing helps our models converge later on. 
+We then focus on dimensionality reduction to help the generalizability of our model, reducing the likelihood of overfitting and eliminating features that are very highly correlated. 
+These methods are essential to our preprocessing and significantly improve our model results and training time.
+            
+First, we discuss our approach for data standardization.
+""")
 st.image("visuals/stress_dataset.png")
-st.write("A first look at the data shows how there are varying magnitudes. We can further see that from the distribution of the features:")
+st.markdown("""
+A first look at the data shows how there are varying magnitudes. We can further see that from the distribution of the features:
+""")
 st.image("visuals/dataset_distribution.png")
 st.markdown("""
-Thus, we would first need to **standardize** the data. This would ensure that features of higher magnitudes do not dominate features of lower magnitudes. 
-For example, depression has a much higher magnitude compared to bullying. Hence, we use **sklearn.preprocessing.StandardScaler** to scale the features.
-
-Another thing we need to do is perform One-Hot Encoding on the target variable. 
-Let’s look at stress. It takes the discrete values 0, 1 and 2. 
-To make the model more probabilistic and prevent ordinality issues, we decide to use One-Hot Encoding. 
-For that we have **sklearn.preprocessing.OneHotEncoder**.
+Thus, we would first need to **standardize** the data. 
+This would ensure that features of higher magnitudes do not dominate features of lower magnitudes. 
+For example, depression has a much higher magnitude compared to bullying. 
+Hence, we use **sklearn.preprocessing.StandardScaler** to scale the features. 
 """)
+st.image("visuals/StandardScaler.png")
+st.markdown("""
+After appropriate scaling, each feature will be centered with a mean of 0 and of 1.
+
+Next, we decide to use Principal Component Analysis (PCA) to perform our feature reduction. 
+
+First, we perform One-Hot Encoding on the target variable. Let's look at stress. 
+It takes the discrete values 0, 1 and 2. To make the model more probabilistic and prevent ordinality issues, we decide to use One-Hot Encoding. 
+For that we have **sklearn.preprocessing.OneHotEncoder**.
+
+With this encoding, we can then run the following to find a correlation matrix for all features.
+""")
+st.image("visuals/corr_matrix_code.png")
 st.image("visuals/feature_correlation_matrix.png")
 st.markdown("""
-Looking at the feature correlation matrix, we can see that some features such as anxiety level and future career concerns are highly correlated,
- and may be redundant. We can use dimensionality reduction, especially Principal Component Analysis (PCA) to combat this.
-
+Looking at the feature correlation matrix, we can see that some features such as anxiety level and future career concerns are highly correlated, and may be redundant. 
+This is where PCA comes in. 
+We want to combine these 20+ features down to a few engineered features that are better able to capture the overall variance exhibited by the dataset. 
+We call the best of these features **Principle Components**, and we can use just the first few to represent the entirety of our dataset.
+""")
+st.image("visuals/PCA_Rep.png")
+st.markdown("""
+Here, we can see that just the first two principal components are sufficient for an accurate classification of a large proportion of our test data points. 
+By looking at the following chart, we notice that over 60% of the dataset’s variance is explainable by just these two principal components, serving as an effective method for significant dimensionality reduction.
+""")
+st.image("visuals/Expected_Variance_graph.png")
+st.markdown("""
+To further improve future performance, we are now going to look at polynomial features. 
+We will accomplish this by checking metrics on each degree polynomial. 
+Additionally, we will work on feature selection and potentially try to create new features by examining relationships between existing features. 
 """)
 
 st.markdown("#### Models")
