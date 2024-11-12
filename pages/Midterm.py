@@ -40,42 +40,56 @@ Looking at the feature correlation matrix, we can see that some features such as
 
 st.markdown("#### Models")
 st.markdown("""
-Since our dataset contains labeled data, we will explore the following supervised models:
-Support Vector Machines (SVM), Neural Networks, and Gradient Boosting Machines (GBM).
-            
-SVM is a powerful regression and classification model that works by finding an optimal
-hyperplane separating different output values. They are known for managing complex decision
-boundaries in high dimensions, which is applicable given the diverse feature sets in our data.
-            
-Neural Networks are a family of machine learning models characterized by a network of
-connected neuron layers that can effectively capture complex, non-linear relationships between
-features. CNNs in particular are effective with tabularized data that our dataset is formatted in,
-where local patterns between feature groups can be captured through convolutional filters.
-            
-Finally, GBM is a learning technique that sequentially builds a series of self-correcting
-decision trees. This model is also highly effective for capturing non-linear relationships and
-provides high predictive accuracy that is necessary for our application.
+For our first model, we decided to use a Support Vector Machine (SVM). Specifically, we implemented a linear kernel with a One-vs-One decision function shape. We chose this model because we felt it was best suited for the problem at hand: identifying the stress level of students given a few features relating to social behavior, academic performance, and physical health. There are a few specific reasons for choosing an SVM over other popular models:
+
+1. SVM’s have good performance for high-dimensional spaces like ours.
+2. Overfitting is mitigated due to the SVM’s regularization parameter
+3. SVM’s are also less sensitive to the outliers in the stress dataset due to the support vectors used to implement it
+4. SVM’s are well suited for multi-class problems like identifying stress level
+
+Looking at the combined use of SVM and PCA, a few key problems are addressed. Irrelevant or redundant features are not weighted as heavily and training speed is increased. Overall, the model and preprocessing choice worked well in conjunction as proven by our performance metrics.
+
 """)
 
 st.subheader("Results and Discussion")
-st.markdown("#### Metrics")
+st.markdown("#### Confusion Matrix Analysis")
 st.markdown("""
-Accuracy: Measures the proportion of correct predictions out of all predictions, providing an overall sense of model performance.
-            
-Precision: The proportion of true positives among all positive predictions, crucial when false positives are costly.
+The confusion matrix visualization shows the model's prediction performance across different classes using a blue-scale heatmap. Key observations:
 
-Recall (Sensitivity): The proportion of actual high-stress students correctly identified by the model, reducing false negatives.
-
-F1 Score: Balances precision and recall for a comprehensive view of the model’s accuracy.
+- The diagonal elements show strong prediction accuracy, indicating the model performs well at classifying all three classes
+- The intensity of blue squares along the diagonal suggests balanced performance across classes
+- There appears to be minimal confusion between classes, with relatively low off-diagonal values
+- The symmetrical nature of misclassifications suggests no systematic bias toward any particular class
 """)
-st.markdown("#### Goals")
+st.markdown("#### Classification Report Metrics")
 st.markdown("""
-Accuracy, Precision, Recall, F1 Score: Aim for at least 80% to ensure high performance across all metrics.
+The detailed classification report reveals:
+
+- Overall accuracy: 90% across all classes
+- Per-class metrics:
+    - Class 0: Precision 0.87, Recall 0.94, F1-score 0.90
+    - Class 1: Precision 0.92, Recall 0.88, F1-score 0.90
+    - Class 2: Precision 0.91, Recall 0.88, F1-score 0.90
+
+The consistent F1-scores around 0.90 across all classes indicates well-balanced performance without significant bias toward any particular class.
 """)
 
-st.markdown("#### Expected Results")
+st.markdown("#### ROC Curve Analysis")
 st.markdown("""
-Strong factor correlations, high model performance, early stress identification, and positive impact on student well-being.
+The ROC curves plot demonstrates the model's discrimination ability:
+
+- All three class-specific ROC curves show strong performance, with AUC values consistently above 0.90
+- The curves rise sharply toward the upper-left corner, indicating good true positive rates with low false positive rates
+- The similar shapes and AUC values across classes further supports balanced classification performance
+- The significant separation from the diagonal reference line confirms the model's strong predictive power
+""")
+
+st.markdown("#### Key Insights")
+st.markdown("""
+1. The model achieves strong overall performance with 90% accuracy
+2. Performance is remarkably balanced across all three classes
+3. High precision and recall values indicate both good positive prediction and good coverage
+4. ROC curves demonstrate excellent discrimination ability for all classes
 """)
 
 st.subheader("References")
@@ -99,17 +113,14 @@ st.subheader("Contribution Chart")
 
 chart = {
     "Name" : ["Jimin Kim", "Jason Jian Lai", "Safiy Ahmad Malik", "Darren Tan", "Jinlin Yang"],
-    "Contributions" : ["Implementation of ML Model", "Data Preprocessing", "Data Preprocessing",
-                        "Streamlit Site, Contribution Chart, ML Model Implementation", "Data Visualization"
+    "Contributions" : ["Implementation of ML Model, ML Model Writeup", "Data Preprocessing Writeup", "Data Preprocessing",
+                        "Streamlit Site, ML Model Implementation", "Data Visualization, Data Visualization Writeup"
     ]
 }
 
 
 # Display the table
 st.table(chart)
-
-st.header("Video Presentation")
-st.markdown("Link: [https://youtu.be/XdXegoL8W64](https://youtu.be/XdXegoL8W64)")
 
 st.header("Github Repository")
 st.markdown("Link: [https://github.gatech.edu/smalik79/ML4641.git](https://github.gatech.edu/smalik79/ML4641.git)")
