@@ -72,6 +72,7 @@ Additionally, we will work on feature selection and potentially try to create ne
 """)
 
 st.markdown("#### Models")
+st.markdown('##### Support Vector Machine (SVM)')
 st.markdown("""
 For our first model, we decided to use a Support Vector Machine (SVM). Specifically, we implemented a linear kernel with a One-vs-One decision function shape. We chose this model because we felt it was best suited for the problem at hand: identifying the stress level of students given a few features relating to social behavior, academic performance, and physical health. There are a few specific reasons for choosing an SVM over other popular models:
 
@@ -84,8 +85,29 @@ Looking at the combined use of SVM and PCA, a few key problems are addressed. Ir
 
 """)
 
+st.markdown('###### Neural Network')
+st.markdown("""
+For our second model, we decided to use a sequential model of a neural network with 5 layers not including our dropout. We used the same preprocessing techniques as we did for the SVM.
+We had an input layer of 2 for our 2 components followed by a Dense layer of 128, a dropout layer, a Dense layer of 64, a Dense Layer of 32, and a final Dense layer of 3.
+We decided that using a relu activation function for the first three Dense layers was fitting because it showed better performance and we used softmax on our last layer for better classification.
+We chose this model because it was a simple model for a simple problem. A few things were tweaked, such as the adition of the dropout layer, which we included to help with overfitting.
+Overall, the model performed pretty well with an average accuracy around 0.88. 
+
+Here are also a few reasons why we expected Neural Networks to be a good alternative to SVM's:
+1. Neural Networks are great for automatic feature extraction especially when ours had a large number of features
+2. Multi-class classification is also something that Neural Networks excels at, especially when considering our multiple stress levels  
+3. Building this neural network was also simple because of its flexibitliy, from adjustments to layer size to selection of activation function
+4. Neural Networks can provide a number of features to assist with regularization and overfitting, as we capitalized on with the dropout layer
+            
+Overall, our Neural Network performed well for our dataset due to the many reasons that make Neural Networks scalable and easy to build upon. 
+""")
+
+st.markdown('###### Random Forest')
+
 st.subheader("Results and Discussion")
-st.markdown("#### Confusion Matrix Analysis")
+
+st.markdown('#### SVM Results')
+st.markdown("##### Confusion Matrix Analysis")
 st.image("visuals/Confusion_Matrix.png")
 st.markdown("""
 The confusion matrix visualization shows the model's prediction performance across different classes using a blue-scale heatmap. Key observations:
@@ -95,7 +117,7 @@ The confusion matrix visualization shows the model's prediction performance acro
 - There appears to be minimal confusion between classes, with relatively low off-diagonal values
 - The symmetrical nature of misclassifications suggests no systematic bias toward any particular class
 """)
-st.markdown("#### Classification Report Metrics")
+st.markdown("##### Classification Report Metrics")
 st.image("visuals/Report.png")
 st.markdown("""
 The detailed classification report reveals:
@@ -109,7 +131,7 @@ The detailed classification report reveals:
 The consistent F1-scores around 0.90 across all classes indicates well-balanced performance without significant bias toward any particular class.
 """)
 
-st.markdown("#### ROC Curve Analysis")
+st.markdown("##### ROC Curve Analysis")
 st.image("visuals/ROC_Curve.png")
 st.markdown("""
 The ROC curves plot demonstrates the model's discrimination ability:
@@ -120,7 +142,7 @@ The ROC curves plot demonstrates the model's discrimination ability:
 - The significant separation from the diagonal reference line confirms the model's strong predictive power
 """)
 
-st.markdown("#### Key Insights")
+st.markdown("##### Key Insights")
 st.markdown("""
 1. The model achieves strong overall performance with 90% accuracy
 2. Performance is remarkably balanced across all three classes
@@ -149,8 +171,8 @@ st.subheader("Contribution Chart")
 
 chart = {
     "Name" : ["Jimin Kim", "Jason Jian Lai", "Safiy Ahmad Malik", "Darren Tan", "Jinlin Yang"],
-    "Contributions" : ["Implementation of ML Model, ML Model Writeup", "Data Preprocessing Writeup", "Data Preprocessing",
-                        "Streamlit Site, ML Model Implementation", "Data Visualization, Data Visualization Writeup"
+    "Contributions" : ["ML Presentation & Video", "Comparison and Analysis of Models", "Random Forest Implementation & Writeup",
+                        "Streamlit Site, Neural Network Implementation & Writeup", "Data Visualization & Writeup"
     ]
 }
 
