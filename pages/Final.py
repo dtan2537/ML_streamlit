@@ -85,7 +85,7 @@ Looking at the combined use of SVM and PCA, a few key problems are addressed. Ir
 
 """)
 
-st.markdown('###### Neural Network')
+st.markdown('##### Neural Network')
 st.markdown("""
 For our second model, we decided to use a sequential model of a neural network with 5 layers not including our dropout. We used the same preprocessing techniques as we did for the SVM.
 We had an input layer of 2 for our 2 components followed by a Dense layer of 128, a dropout layer, a Dense layer of 64, a Dense Layer of 32, and a final Dense layer of 3.
@@ -102,7 +102,28 @@ Here are also a few reasons why we expected Neural Networks to be a good alterna
 Overall, our Neural Network performed well for our dataset due to the many reasons that make Neural Networks scalable and easy to build upon. 
 """)
 
-st.markdown('###### Random Forest')
+st.markdown('##### Random Forest')
+st.markdown("""
+I had initially decided to use a Random Forest which is an ensemble method that trains multiple decision trees on various feature subsets in order to create a more generalized model. 
+Additionally, feature selection was not required and hence collinearity was handled well which was an issue in our dataset. Also, tree algorithms are generally robust to outliers. 
+I followed based on another paper that had achieved 84% accuracy, however the dataset was different from ours. 
+[6] We scaled the data and used one-hot encoding to reduce the effects of ordinality of the categorical variables. 
+We ended up achieving 84.5% accuracy on the test set (80-20 split) after hyperparameter tuning using randomized search cross validation - a method that randomly selects hyperparameter combinations from a chosen set and performs 5 fold cross validation after training the model. 
+The model with the best accuracy is picked.
+""")
+st.image("visuals/RandomizedSearchCV.png")
+st.markdown("""
+However, we decided to try a decision tree to rule out underfit, as it could have been that we were over generalizing. 
+It seemed like using less estimators helped so why not try one estimator. We performed GridSearchCV on the decision tree as training a single tree is less computationally expensive. 
+For our best estimator, the criterion for splitting was Gini impurity while the maximum depth was 119.
+""")
+st.image("visuals/GridSearchCV.png")
+st.markdown("""
+We achieved 90% accuracy on the test set. It clearly indicated that we could’ve been underfitting with the Random Forest. 
+Additionally, decision trees assign importance to features which provide useful insights to the data. 
+In our case, blood pressure, noise level, sleep quality and bullying were the top four features. For other models, these insights could be used for feature selection.
+""")
+st.image("visuals/model insights.png")
 
 st.subheader("Results and Discussion")
 
@@ -161,6 +182,8 @@ st.markdown("""
 [4] D. J. Taylor, C. E. Gardner, A. D. Bramoweth, J. M. Williams, B. M. Roane, and E. A. Grieser, "Insomnia and Mental Health in College Students," *Behavioral Sleep Medicine*, vol. 9, no. 2, pp. 107-116, 2010.
 
 [5] A. Wijaya, D. Nugroho, and R. Putra, "Assessing the Impact of Academic and Social Factors on Student Stress Using Logistic Regression," *International Journal of Educational Research and Development*, vol. 17, no. 4, pp. 456-465, 2021.
+
+[6] S. R. Kandukuri Sai et al, "Student Stress Prediction Using Machine Learning Algorithms And Comprehensive Analysis," NeuroQuantology, vol. 20, (14), pp. 895-906, 2022. Available: https://www.proquest.com/scholarly-journals/student-stress-prediction-using-machine-learning/docview/2901720078/se-2. DOI: https://doi.org/10.4704/nq.2022.20.14.            
 """)
 
 st.header("Charts")
