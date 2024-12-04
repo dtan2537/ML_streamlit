@@ -171,6 +171,95 @@ st.markdown("""
 4. ROC curves demonstrate excellent discrimination ability for all classes
 """)
 
+st.markdown('#### Neural Network Results')
+st.markdown("##### Confusion Matrix Analysis")
+st.image("visuals/NN_confusion_matrix.png")
+st.markdown("""
+The confusion matrix visualizes the model's prediction accuracy across classes:
+
+- **Diagonal Elements**: Strong values on the diagonal indicate high classification accuracy for each class.
+- **Off-Diagonal Elements**: Minimal misclassifications occur, with the majority of errors arising between Class 2 and Class 0.
+- **Balanced Performance**: Similar values across diagonal elements suggest the model performs equally well for all classes.
+""")
+st.markdown("##### Classification Report")
+st.image("visuals/nn_classification_report.png")
+st.markdown("""
+The classification report provides detailed metrics for each class:
+            
+- **Class-Level Metrics:**
+    - Precision ranges from 0.83 to 0.95, with the highest for High Stress.
+    - Recall varies between 0.81 and 0.95, with the lowest for High Stress.
+    - F1-scores are balanced across all classes, averaging 0.89.
+- **Overall Accuracy:** Achieved 89% accuracy across the dataset.
+- **Weighted and Macro Averages:** Consistent at 0.89 for all major metrics, indicating balanced performance.
+            
+The model balances precision and recall across classes, resulting in strong F1-scores and overall accuracy.
+""")
+st.markdown("##### ROC Curve Analysis")
+st.image("visuals/NN_roc_curve.png")
+st.markdown("""
+The ROC curves evaluate the model's discrimination ability across classes:
+            
+- **AUC Values:** All three classes achieve AUC values of 0.99, indicating very good performance.
+- **Curve Shape:** Sharp curves approaching the upper-left corner demonstrate strong sensitivity.
+- **Consistency:** Uniform AUC values across classes shows the model's balanced predictive ability.
+""")
+st.markdown("##### Key Insights")
+st.markdown("""
+- The model achieves **89% accuracy** with balanced performance across all classes.
+- **F1-scores** are consistent, averaging **0.89**, indicating effective precision and recall.
+- **ROC AUC values** of **0.99** across classes highlight strong discrimination capabilities.
+- Very little misclassifications and high prediction confidence suggest reliable model performance.
+""")
+
+st.markdown('#### Random Forest Results')
+
+
+st.markdown("##### Confusion Matrix Analysis")
+st.image("visuals/rf_confusion_matrix.png")
+st.markdown("""
+The confusion matrix visualizes the model's prediction accuracy across classes:
+            
+- **Diagonal Elements:** Strong values (e.g., 90.79%, 90.41%, and 87.32%) along the diagonal indicate the model's high classification accuracy for each class.
+- **Off-Diagonal Elements:** Minimal misclassifications occur, with most errors involving Class 2 being misclassified as Class 0 or Class 1.
+- **Balanced Performance:** Similar values across diagonal elements demonstrate that the model performs consistently well across all classes.
+
+""")
+st.markdown("##### Classification Report")
+st.image("visuals/rf_classification_report.png")
+st.markdown("""
+The classification report provides detailed metrics for each class:
+
+- **Class-Level Metrics:**
+    - Precision: Ranges from 0.88 to 0.92, indicating effective positive predictions across classes.
+    - Recall: Ranges from 0.87 to 0.91, reflecting strong coverage for each class.
+    - F1-scores: Well-balanced across all classes, averaging 0.90.
+- **Overall Metrics:**
+    - Accuracy: Achieved a robust 90% accuracy across the dataset.
+    - Weighted and Macro Averages: Consistent at 0.90 for all major metrics, showcasing the model's balanced performance.
+            
+The model balances precision and recall, leading to strong F1-scores and excellent overall accuracy.
+
+""")
+
+st.markdown("##### ROC Curve Analysis")
+st.image("visuals/rf_roc_curve.png")
+st.markdown("""
+The ROC curves evaluate the model's ability to differentiate between classes:
+            
+- **AUC Values:** All three classes achieve AUC values between 0.98 and 0.99, indicating exceptional discrimination ability.
+- **Curve Shape:** Sharp curves nearing the upper-left corner signify high sensitivity and specificity.
+- **Consistency:** Similar AUC values across classes demonstrate the model's balanced prediction capabilities.
+""")
+
+st.markdown("##### Key Insights")
+st.markdown("""
+- The model achieves 90% accuracy with balanced performance across all classes.
+- F1-scores average 0.90, indicating effective precision and recall.
+- ROC AUC values of 0.98–0.99 confirm excellent class discrimination.
+- Minimal misclassifications and strong overall metrics highlight reliable model performance.
+""")
+
 st.subheader("References")
 st.markdown("""
 [1] H. Choi, S. Lee, and J. Kim, "Predicting Student Stress Levels Using Random Forest Algorithm with Physiological and Environmental Data," *Journal of Educational Data Science*, vol. 14, no. 3, pp. 123-134, 2019.
