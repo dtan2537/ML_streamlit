@@ -313,7 +313,7 @@ In combination, these next steps would create a robust, accurate, and applicable
 """)
 
 st.subheader("Video Presentation")
-st.markdown("Link: [https://youtu.be/XdXegoL8W64](https://youtu.be/XdXegoL8W64)")
+st.markdown("Link: [https://www.youtube.com/watch?v=WbXrgwk_DoI](https://www.youtube.com/watch?v=WbXrgwk_DoI)")
 
 st.subheader("References")
 st.markdown("""
