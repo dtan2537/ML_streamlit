@@ -300,11 +300,11 @@ All three are strong! Go with SVM for balance, Neural Network for tricky pattern
 
 st.markdown("#### Next Steps")
 st.markdown("""
-While we now have a reliable and accurate model for predicting stress levels for students, there are several paths we can now go down to transform this project into a more generalizable and useful tool for students. 
+Now that we have a reliable and accurate model for predicting stress levels for students, there are several paths we can now go down to transform this project into a more generalizable and useful tool. 
 
 The first of these is to refine and expand on the data collection process. 
 Though we sourced a clean pre-existing dataset to use in this project, the dataset was lacking in size at only around 1100 entries, each consisting of features that may not be ideal for capturing stress. 
-This limitation in dataset size and quality is a potential reason that none of the tested models surpassed ~90% accuracy, and is an area where we could greatly improve the model in.
+This limitation in dataset size and quality is a potential reason that none of the tested models surpassed ~90% accuracy, and is an area where we could greatly improve the model if we sampled more of our own data.
 
 To improve the usefulness of this tool for students hoping to mitigate their levels of stress, we could connect the model to a large language model in the future to diagnose the reasons for stress and suggest stress-relief methods. 
 This can be achieved by analyzing feature importance within the model, and suggesting mitigation methods with an LLM if some of these important features were to hold true for a student.
