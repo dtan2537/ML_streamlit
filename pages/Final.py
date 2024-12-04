@@ -102,7 +102,7 @@ Here are also a few reasons why we expected Neural Networks to be a good alterna
 Overall, our Neural Network performed well for our dataset due to the many reasons that make Neural Networks scalable and easy to build upon. 
 """)
 
-st.markdown('##### Random Forest')
+st.markdown('##### Decision Tree')
 st.markdown("""
 I had initially decided to use a Random Forest which is an ensemble method that trains multiple decision trees on various feature subsets in order to create a more generalized model. 
 Additionally, feature selection was not required and hence collinearity was handled well which was an issue in our dataset. Also, tree algorithms are generally robust to outliers. 
@@ -212,7 +212,7 @@ st.markdown("""
 - Very little misclassifications and high prediction confidence suggest reliable model performance.
 """)
 
-st.markdown('#### Random Forest Results')
+st.markdown('#### Decision Tree Results')
 
 
 st.markdown("##### Confusion Matrix Analysis")
@@ -259,6 +259,45 @@ st.markdown("""
 - ROC AUC values of 0.98–0.99 confirm excellent class discrimination.
 - Minimal misclassifications and strong overall metrics highlight reliable model performance.
 """)
+
+st.markdown('#### Comparision between SVM, Neural Network, and Decision Tree')
+st.markdown("""
+When classifying stress levels, it’s key to weigh the pros and cons of different models to find the best fit. 
+Here, we’re comparing SVM, Neural Networks, and Decision Trees based on performance, interpretability, complexity, and how well they handle the task.
+
+**Model Interpretability and Complexity**
+1. **SVM:**
+            SVMs are pretty straightforward and easy to understand, especially with a linear setup. They handle outliers well and don’t overfit easily, but training can be slow with big datasets.
+2. **Neural Network:**
+            Neural Networks are super powerful and great at spotting complex patterns, but they’re hard to interpret. They need a lot of time and resources to train, so they’re better for situations where accuracy matters more than explainability.
+3. **Decision Tree**:
+            Decision Trees are simple and easy to follow with clear rules. They can overfit if the data is noisy or has too many features, but with good tuning, they can compete with fancier models.
+
+**Performance Comparison**
+1. **Accuracy:**
+            SVM and Decision Tree models hit 90% accuracy, while the Neural Network was close behind at 89%. All three showed strong classification capabilities, with SVM and Decision Tree having a slight edge.
+2. **Class-Level Performance:**
+            SVM and Decision Tree had balanced F1-scores of 0.90 across all classes, showing consistent precision and recall. The Neural Network was just a bit lower at 0.89 but still performed well. SVM’s strength in handling complex data shines through in its consistent performance across all stress levels.
+3. **Misclassifications:**
+            Misclassification rates were low for all models, mostly happening between Class 2 and Class 0. The Neural Network had slightly more errors, showing it sometimes mixed-up certain classes more than the SVM and Decision Tree.
+
+            
+**Discrimination Power (ROC Curve Analysis)**
+1. **SVM:**
+            SVM showed strong discrimination with AUC values over 0.90 for all classes. Its sharp ROC curves highlight high sensitivity and low false positives, making it great for fine-grained classification.
+2. **Neural Network:**
+            With perfect AUC scores of 0.99 across the board, the Neural Network excelled at separating classes, making it good  for multi-class problems.
+3. **Decision Tree:**
+            The Decision Tree was right up there with AUC values between 0.98 and 0.99, proving that even a simpler model can effectively distinguish between stress levels.
+
+**Key Takeaways**
+- **SVM:** Great for structured, high-dimensional data. It’s reliable, with solid performance and few mistakes, but slows down with bigger datasets.
+- **Neural Network:** Awesome at spotting complex patterns and crushing it on class separation (AUC = 0.99). Not as easy to interpret and slightly less accurate, but perfect when precision is king.
+- **Decision Tree:** Fast, simple, and easy to understand. Hits 90% accuracy and AUC (~0.99), making it a go-to for quick, resource-friendly tasks.
+
+All three are strong! Go with SVM for balance, Neural Network for tricky patterns, and Decision Tree for speed and simplicity.
+""")
+
 
 st.subheader("References")
 st.markdown("""
